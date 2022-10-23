@@ -7,16 +7,20 @@ import Button from './Button' // import Button.js
 
 // add props so I can pass the value!
 // you can specify the props by using {}
-// If I add multiple button in the function I can get buttons!
+// if I add multiple button in the function I can get buttons! Reuse!
+// onClick is in the Button tag, I need to handle it in the Button.js 
 const Header = ({ title }) => {
-  return (
-    <header className='header'>
-      <h1>{title}</h1>
-      <Button color='green' text='Hello' />
-      <Button color='orange' text='Hi' />
-      <Button color='purple' text='Bye' />
-    </header>
-  )
+    // nested function for onClick event
+    const onClick = () => {
+        console.log('Click')
+    }
+
+    return (
+        <header className='header'>
+            <h1>{title}</h1>
+            <Button color='green' text='Add' onClick={onClick} />
+        </header>
+    )
 }
 
 Header.defaultProps = {
