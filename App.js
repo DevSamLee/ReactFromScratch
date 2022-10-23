@@ -30,10 +30,12 @@ function App() {
     }
   ])
 
+  // but it's not working? why??
+  // need to add props or deconstructure it in Tasks.js 
   return (
     <div className='container'>
       <Header />
-      <Tasks tasks={task} />
+      <Tasks tasks={tasks} />
     </div>
   );
 }
