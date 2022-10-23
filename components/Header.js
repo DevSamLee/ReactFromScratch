@@ -2,14 +2,19 @@
 // import React from 'react' // I don't need this anymore!
 
 import PropTypes from 'prop-types' //ES7 -> 'impt'
+import Button from './Button' // import Button.js
 
 
-//add props so I can pass the value!
+// add props so I can pass the value!
 // you can specify the props by using {}
+// If I add multiple button in the function I can get buttons!
 const Header = ({ title }) => {
   return (
-    <header>
-      <h1 style={ headingStyle }>{title}</h1>
+    <header className='header'>
+      <h1>{title}</h1>
+      <Button color='green' text='Hello' />
+      <Button color='orange' text='Hi' />
+      <Button color='purple' text='Bye' />
     </header>
   )
 }
@@ -23,6 +28,7 @@ Header.propTypes = {
     title: PropTypes.string.isRequired,
 }
 
+// CSS in JS
 const headingStyle = {
     color: 'red', 
     backgroundColor:'black'
