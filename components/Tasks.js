@@ -1,4 +1,4 @@
-const Tasks = () => {
+const Tasks = ({ tasks }) => {
   // to update the tasks -> use SetTasks
   return (
     <>
