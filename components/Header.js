@@ -9,7 +9,7 @@ import PropTypes from 'prop-types' //ES7 -> 'impt'
 const Header = ({ title }) => {
   return (
     <header>
-      <h1>{title}</h1>
+      <h1 style={ headingStyle }>{title}</h1>
     </header>
   )
 }
@@ -20,8 +20,14 @@ Header.defaultProps = {
 
 // if you pass something isn't string, it will create warning. (but still render)
 Header.propTypes = {
-    title: PropTypes.string,
+    title: PropTypes.string.isRequired,
 }
+
+const headingStyle = {
+    color: 'red', 
+    backgroundColor:'black'
+}
+
 export default Header
 
 // nothing happened yet! because I didn't add 'Header.js' to 'App.js'
