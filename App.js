@@ -30,12 +30,17 @@ function App() {
     }
   ])
 
+  // Delete Task
+  const deleteTask = (id) => {
+    setTasks(tasks.filter((task) => tasks.id !== id))
+  }
+
   // but it's not working? why??
   // need to add props or deconstructure it in Tasks.js 
   return (
     <div className='container'>
       <Header />
-      <Tasks tasks={tasks} />
+      <Tasks tasks={tasks} onDelete={deleteTask} />
     </div>
   );
 }
