@@ -1,5 +1,6 @@
 import Header from './components/Header' // import from Header.js
 import Tasks from './components/Tasks' // import from Tasks.js
+import AddTask from './components/AddTask' // import from AddTask.js
 import { useState } from 'react'
 
 function App() {
@@ -29,10 +30,23 @@ function App() {
       reminder: false,
     }
   ])
+  
+  // Add Task
+  const addTask = (task) => {
+    const id = Math.floor(Math.random() * 10000) + 1 // to get a random id
+    const newTask = { id, ...task}
+    setTasks([...tasks, newTask]) // add newTask to array tasks
+  }
 
   // Delete Task
   const deleteTask = (id) => {
-    setTasks(tasks.filter((task) => tasks.id !== id))
+    setTasks(tasks.filter((task) => task.id !== id))
+  }
+
+  // Toggle Reminder
+  const toggleReminder = (id) => {
+    setTasks(tasks.map((task) => task.id === 
+    id ? {...task, reminder: !task.reminder } : task))
   }
 
   // but it's not working? why??
@@ -40,7 +54,11 @@ function App() {
   return (
     <div className='container'>
       <Header />
-      <Tasks tasks={tasks} onDelete={deleteTask} />
+      <AddTask onAdd={addTask} />
+      {tasks.length > 0 ? (
+      <Tasks tasks={tasks} onDelete={deleteTask}
+      onToggle={toggleReminder} />
+      ) : ('No Tasks To Show.')}
     </div>
   );
 }
