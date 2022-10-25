@@ -1,17 +1,14 @@
-import { FaTimes } from 'react-icons/fa'
+import Task from './Task'
 
-const Task = ({ task, onDelete }) => {
+const Tasks = ({ tasks, onDelete }) => {
+  // to update the tasks -> use SetTasks
   return (
-    <div className='task'>
-    <h3>
-        {task.text}
-        <FaTimes style={{ color: 'red', cursor: 'pointer' }}
-        onClick={onDelete}
-        />
-    </h3>
-      <p>{task.day}</p>
-    </div>
+    <>
+      {tasks.map((task) => (
+      <Task key={task.id} task={task} onDelete={onDelete} />
+      ))}
+    </>
   )
 }
 
-export default Task
+export default Tasks
