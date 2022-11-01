@@ -4,6 +4,8 @@ import AddTask from './components/AddTask' // import from AddTask.js
 import { useState } from 'react'
 
 function App() {
+  // true - shows form, false - hides form
+  const [showAddTask, setShowAddTask] = useState(false)
   const [tasks, setTasks] = useState([
     {
       id: 1,
@@ -50,11 +52,12 @@ function App() {
   }
 
   // but it's not working? why??
-  // need to add props or deconstructure it in Tasks.js 
+  // need to add props or deconstructure it in Tasks.js
+  // ternery operator without else - && 
   return (
     <div className='container'>
-      <Header />
-      <AddTask onAdd={addTask} />
+      <Header onAdd={() => setShowAddTask(!showAddTask)}/>      
+      {showAddTask && <AddTask onAdd={addTask} />}
       {tasks.length > 0 ? (
       <Tasks tasks={tasks} onDelete={deleteTask}
       onToggle={toggleReminder} />
