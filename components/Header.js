@@ -8,17 +8,20 @@ import Button from './Button' // import Button.js
 // add props so I can pass the value!
 // you can specify the props by using {}
 // if I add multiple button in the function I can get buttons! Reuse!
-// onClick is in the Button tag, I need to handle it in the Button.js 
-const Header = ({ title }) => {
+// onClick is in the Button tag, I need to handle it in the Button.js
+// need to add props for toggle in App.js 
+const Header = ({ title, onAdd, showAdd }) => {
     // nested function for onClick event
-    const onClick = () => {
-        console.log('Click')
-    }
-
+    // you can add event in the parentheses
+    // make color and text value dynamic! by using ternary operator
     return (
         <header className='header'>
             <h1>{title}</h1>
-            <Button color='green' text='Add' onClick={onClick} />
+            <Button 
+            color={showAdd ? 'red' : 'green'} 
+            text={showAdd ? 'Close' : 'Add'} 
+            onClick={onAdd} 
+            />
         </header>
     )
 }
